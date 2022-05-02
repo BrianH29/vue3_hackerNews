@@ -4,7 +4,7 @@ export default function createNewsList(name){
   return{
     name,
     async created(){
-      await this.$store.dispatch('');
+      await this.$store.dispatch('newsList');
     },
     render(createElement){
       return createElement(ListView);
