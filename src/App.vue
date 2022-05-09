@@ -1,16 +1,9 @@
 <script setup>
 import MenuHeader from '@/components/common/MenuHeader.vue';
 import MenuNav from '@/components/common/MenuNav.vue';
-import { useNewsList } from './stores/newsList';
-
-const store = useNewsList();
-
-// function clickEvent(title){
-//   alert(title);
-// }
 
 const clickEvent = (title) => {
-  alert(title);
+  this.$router.push(`/${title}`)
 }
 </script>
 
