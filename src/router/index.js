@@ -15,7 +15,7 @@ const router = createRouter({
       component: createNewsList('newNewsView'),
       async beforeEnter(to, from, next){
         const store = useNewsList();
-        await store.FETCH_NEWS(`newstories/json`);
+        await store.FETCH_NEWS(`news/2.json`);
         next();
       }
     },

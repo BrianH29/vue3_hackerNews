@@ -34,3 +34,4 @@ npm run build
 npm run lint
 ```
 # vue3_hackerNews
+[hacker news api](https://github.com/tastejs/hacker-news-pwas/blob/master/docs/api.md)
