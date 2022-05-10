@@ -5,7 +5,7 @@ export const useNewsList = defineStore('newsList', {
   state: () => ({
 
   }),
-  getters:{},
+   getters:{},
    actions :{
       async FETCH_NEWS(params) {
           await fetch_news(params);

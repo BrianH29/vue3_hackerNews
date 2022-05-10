@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import createNewsList from '@/views/createNewsList';
-import { useNewsList } from '../stores/newsList';
-
-const store = useNewsList();
+import { useNewsList } from '@/stores/newsList';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,6 +14,7 @@ const router = createRouter({
       name: 'new',
       component: createNewsList('newNewsView'),
       async beforeEnter(to, from, next){
+        const store = useNewsList();
         await store.FETCH_NEWS(`newstories/json`);
         next();
       }
