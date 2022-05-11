@@ -3,12 +3,18 @@ import { fetch_news } from '@/apis/news'
 
 export const useNewsList = defineStore('newsList', {
   state: () => ({
-
+   newsList : [],
   }),
-   getters:{},
+   getters:{
+      getNewsList: (state) => {
+         state.newsList
+      }
+   },
    actions :{
       async FETCH_NEWS(params) {
-          await fetch_news(params);
+         const {data} =  await fetch_news(params);
+         console.log('check data : ', data);
+         this.newsList.push(data);
       }
    } ,
 })

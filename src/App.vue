@@ -2,14 +2,12 @@
 import MenuHeader from '@/components/common/MenuHeader.vue';
 import MenuNav from '@/components/common/MenuNav.vue';
 
-const clickEvent = (title) => {
-  this.$router.push(`/${title}`)
-}
 </script>
 
 <template>
   <MenuHeader />
-  <MenuNav @clickEvent="clickEvent" />
+  <MenuNav />
+  <routerView></routerView>
 </template>
 
 <style lang="scss" scoped>

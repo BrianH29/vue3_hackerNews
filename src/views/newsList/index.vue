@@ -1,13 +1,9 @@
-<template>
-  <div>
-
-  </div>
-</template>
-
 <script setup>
-
+  import NewsList from '@/components/newsList/NewsList.vue'    
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<template>
+  <div>
+    <NewsList></NewsList>
+  </div>
+</template>

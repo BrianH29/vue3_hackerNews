@@ -7,37 +7,57 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect : '/new'
+      redirect : '/news'
     },
     {
-      path: '/new',
-      name: 'new',
+      path: '/news',
+      name: 'news',
       component: createNewsList('newNewsView'),
       async beforeEnter(to, from, next){
         const store = useNewsList();
-        await store.FETCH_NEWS(`news/2.json`);
+        await store.FETCH_NEWS(`${to.name}/1.json`);
         next();
       }
     },
     {
-      path: '/comments',
-      name: 'comments',
-      component: createNewsList('commentsNewsView')
+      path: '/new',
+      name: 'newest',
+      component: createNewsList('newNewsView'),
+      async beforeEnter(to, from, next){
+        const store = useNewsList();
+        await store.FETCH_NEWS(`${to.name}/1.json`);
+        next();
+      }
     },
     {
       path: '/ask',
       name: 'ask',
-      component: createNewsList('askNewsView')
+      component: createNewsList('askNewsView'),
+      async beforeEnter(to, from, next){
+        const store = useNewsList();
+        await store.FETCH_NEWS(`${to.name}/1.json`);
+        next();
+      }
     },
     {
       path: '/show',
       name: 'show',
-      component: createNewsList('askNewsView')
+      component: createNewsList('askNewsView'),
+      async beforeEnter(to, from, next){
+        const store = useNewsList();
+        await store.FETCH_NEWS(`${to.name}/1.json`);
+        next();
+      }
     },
     {
       path: '/jobs',
       name: 'jobs',
-      component: createNewsList('jobsNewsView')
+      component: createNewsList('jobsNewsView'),
+      async beforeEnter(to, from, next){
+        const store = useNewsList();
+        await store.FETCH_NEWS(`${to.name}/1.json`);
+        next();
+      }
     },
   ],
 });
