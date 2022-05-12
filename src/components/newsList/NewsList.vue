@@ -2,7 +2,7 @@
     import { useNewsList } from '@/stores/newsList';
     const store = useNewsList();
 
-   console.log('newsList.vue : ', store.getNewsList)
+   console.log('newsList.vue : ', store.getNewsList[1])
 </script>
 
 <template>

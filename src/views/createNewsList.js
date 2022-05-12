@@ -1,10 +1,11 @@
+import { h } from 'vue'
 import ListView from '@/views/newsList/index.vue'
 
 export default function createNewsList(name){
   return{
     name,
-    render(createElement){
-      return createElement(ListView);
+    render(){
+      return h(ListView);
     }
   }
 }
