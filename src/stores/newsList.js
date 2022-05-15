@@ -11,10 +11,8 @@ export const useNewsList = defineStore('newsList', {
      }
   },
    getters:{
-      getNewsList: (state) => {
-         console.log('getters : ', state.newsList);
-         return state.newsList
-      }
+      getNewsList: (state) => state.newsList
+
    },
    actions :{
       async FETCH_NEWS(params) {
