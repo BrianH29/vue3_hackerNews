@@ -2,14 +2,9 @@ import { defineStore } from 'pinia';
 import { fetch_news } from '@/apis/news'
 
 export const useNewsList = defineStore('newsList', {
-//   state: () => ({
-//    newsList : [],
-//   }),
-  state: () => {
-     return {
-        newsList: [],
-     }
-  },
+  state: () => ({
+   newsList : [],
+  }),
    getters:{
       getNewsList: (state) => state.newsList
 
