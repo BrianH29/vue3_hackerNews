@@ -3,8 +3,12 @@
   import CustomText from '../CustomText.vue';
   const store = useNewsList();
 
-const clickEvent= (index) => {
-  location.href = store.getNewsList[index].url
+const clickEvent= (sort , index) => {
+  switch(sort){
+    case 'title' : 
+       location.href = store.getNewsList[index].url
+    break;
+  }
 }
 
 </script>
@@ -15,12 +19,12 @@ const clickEvent= (index) => {
         <li v-for="(item, index) in store.getNewsList" class="list-wrapper">
           <div class="d-flex align-center list-wrapper-title">
             <span>{{ index + 1 }}.</span>
-            <span @click="clickEvent(index)" class="clickable">{{ item.title }}</span>
+            <span @click="clickEvent('title', index)" class="clickable">{{ item.title }}</span>
             <span  class="clickable domain"> ({{ item.domain }})</span>
           </div>
           <div class="d-flex align-center list-wrapper-subtitle">
             <span>{{ item.points }} points by</span>
-            <span class="clickable">{{ item.user }}</span>
+            <span class="clickable" @click="clickEvent('user', index)">{{ item.user }}</span>
             <span class="clickable">{{ item.time_ago }}</span>
             <span class="clickable">{{ item.comments_count }} comments</span>
           </div>
@@ -37,10 +41,6 @@ const clickEvent= (index) => {
   &-title{
     gap: 0.4rem;
 
-    .clickable {
-      cursor: pointer;
-    }
-
     .domain{
       font-size: 0.7rem;
       color: grey;
@@ -54,4 +54,8 @@ const clickEvent= (index) => {
   }
 
 }
+
+ .clickable {
+      cursor: pointer;
+    }
 </style> 

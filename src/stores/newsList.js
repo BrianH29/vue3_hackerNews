@@ -13,6 +13,6 @@ export const useNewsList = defineStore('newsList', {
       async FETCH_NEWS(params) {
          const { data } =  await fetch_news(params);
          this.newsList = data;
-      }
+      },
    } ,
 })
