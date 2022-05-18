@@ -1,13 +1,18 @@
 <script setup>
   import { useNewsList } from '@/stores/newsList';
-  import CustomText from '../CustomText.vue';
+  import { useRouter } from 'vue-router';
   const store = useNewsList();
+  const router = useRouter()
 
 const clickEvent= (sort , index) => {
   switch(sort){
     case 'title' : 
        location.href = store.getNewsList[index].url
     break;
+    case 'user' :
+      // router.push(`/user/${store.getNewsList[index].user}`)
+      router.push({ name: 'user', query: { id: store.getNewsList[index].user }})
+      break;
   }
 }
 

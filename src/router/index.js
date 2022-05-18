@@ -1,6 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, useRoute } from 'vue-router';
 import createNewsList from '@/views/createNewsList';
 import { useNewsList } from '@/stores/newsList';
+import { useUser } from '@/stores/user';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -59,6 +60,20 @@ const router = createRouter({
         next();
       }
     },
+    {
+      path : '/user',
+      name : 'user',
+      component: () => import('@/views/user/index.vue'),
+      async beforeEnter(to, from, next){
+          const store = useUser();
+          const route = useRoute();
+
+          console.log('route : ', to.query)
+
+          await store.FETCH_USER(to.query.id)
+          next();
+      }
+    }
   ],
 });
 
