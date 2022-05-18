@@ -1,13 +1,10 @@
 <script setup>
-import CustomText from '@/components/CustomText.vue';
 </script>
 
 <template>
   <header class="header-wrapper d-flex">
     <img src="@/assets/logo.svg" alt="" />
-    <CustomText fontSize="2rem" color="#4FC08D" fontWeight="900"
-      >Vue News</CustomText
-    >
+    <span>Vue News</span>
   </header>
 </template>
 
@@ -18,6 +15,10 @@ import CustomText from '@/components/CustomText.vue';
 
   img {
     width: 1.8rem;
+  }
+
+  span {
+    @include textStyle(#4FC08D, 2rem, 900)
   }
 }
 </style>

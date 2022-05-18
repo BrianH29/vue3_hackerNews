@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, useRoute } from 'vue-router';
 import createNewsList from '@/views/createNewsList';
 import { useNewsList } from '@/stores/newsList';
 import { useUser } from '@/stores/user';
+import { useComment } from '@/stores/comment.js';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -66,14 +67,21 @@ const router = createRouter({
       component: () => import('@/views/user/index.vue'),
       async beforeEnter(to, from, next){
           const store = useUser();
-          const route = useRoute();
-
-          console.log('route : ', to.query)
-
           await store.FETCH_USER(to.query.id)
           next();
+      },
+    },
+    {
+      path : '/comment',
+      name : 'comment',
+      component: () => import('@/views/comment/index.vue'),
+      async beforeEnter(to, from, next){
+        const store = useComment();
+        console.log('query id : ', to.query);
+        await store.FETCH_COMMENT(to.query.id);
+        next();
       }
-    }
+    },
   ],
 });
 

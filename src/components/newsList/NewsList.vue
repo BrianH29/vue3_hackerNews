@@ -13,13 +13,16 @@ const clickEvent= (sort , index) => {
       // router.push(`/user/${store.getNewsList[index].user}`)
       router.push({ name: 'user', query: { id: store.getNewsList[index].user }})
       break;
+      case 'comment' : 
+      router.push({name : 'comment', query: { id : store.getNewsList[index].id }})
+      break;
   }
 }
 
 </script>
 
 <template>
-  <div>
+  <main>
       <ol>
         <li v-for="(item, index) in store.getNewsList" class="list-wrapper">
           <div class="d-flex align-center list-wrapper-title">
@@ -30,12 +33,12 @@ const clickEvent= (sort , index) => {
           <div class="d-flex align-center list-wrapper-subtitle">
             <span>{{ item.points }} points by</span>
             <span class="clickable" @click="clickEvent('user', index)">{{ item.user }}</span>
-            <span class="clickable">{{ item.time_ago }}</span>
-            <span class="clickable">{{ item.comments_count }} comments</span>
+            <span>{{ item.time_ago }}</span>
+            <span class="clickable" @click="clickEvent('comment', index)">{{ item.comments_count }} comments</span>
           </div>
         </li>
       </ol>
-  </div>
+  </main>
 </template>
 
 
@@ -47,15 +50,13 @@ const clickEvent= (sort , index) => {
     gap: 0.4rem;
 
     .domain{
-      font-size: 0.7rem;
-      color: grey;
+      @include textStyle(grey, 0.7rem)
     }
   }
 
   &-subtitle{
     gap: 0.4rem;
-    font-size: 0.7rem;
-    color: grey;
+    @include textStyle(grey, 0.7rem)
   }
 
 }
