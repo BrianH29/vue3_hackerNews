@@ -77,7 +77,6 @@ const router = createRouter({
       component: () => import('@/views/comment/index.vue'),
       async beforeEnter(to, from, next){
         const store = useComment();
-        console.log('query id : ', to.query);
         await store.FETCH_COMMENT(to.query.id);
         next();
       }

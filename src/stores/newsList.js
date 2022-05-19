@@ -15,4 +15,5 @@ export const useNewsList = defineStore('newsList', {
          this.newsList = data;
       },
    } ,
+  persist: true
 })

@@ -19,7 +19,7 @@ const clickEvent= (sort , index) => {
   }
 }
 
-</script>
+</script> 
 
 <template>
   <main>
@@ -60,8 +60,4 @@ const clickEvent= (sort , index) => {
   }
 
 }
-
- .clickable {
-      cursor: pointer;
-    }
 </style> 
