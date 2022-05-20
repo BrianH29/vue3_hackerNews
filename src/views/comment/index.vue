@@ -1,14 +1,14 @@
 <script setup>
 import SingleNewsHeader from '@/components/SingleNewsHeader.vue';
-import { useComment } from '@/stores/comment';
-
-const commentStore = useComment();
-
+import MainComment from '@/components/comments/MainComment.vue';
 
 </script>
 
 <template>
-    <SingleNewsHeader></SingleNewsHeader>
+    <main>
+        <SingleNewsHeader></SingleNewsHeader>
+        <MainComment></MainComment>
+    </main>
 </template>
 
 
