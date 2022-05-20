@@ -1,25 +1,32 @@
 <script setup>
-import { useNewsList } from '@/stores/newsList';
-import { useRoute } from 'vue-router';
+import { useComment } from '@/stores/comment';
+import { useRouter } from 'vue-router';
 
-const newsStore = useNewsList();
-const route = useRoute();
+const store = useComment();
+const router = useRouter();
 
-const data = newsStore.getNewsList.filter(data => data.id === parseInt(route.query.id));
+const clickEvent = (sort) => {
+  switch(sort){
+    case 'user' :
+        router.push({name : 'user', query : {id: store.getCommentList.user}})
+      break;
+  }
+}
 
 </script>
 
 <template>
-  <section class="single-wrapper">
+   <section class="single-wrapper">
     <div class="d-flex align-center single-wrapper-title">
-      <span @click="clickEvent('title', index)" class="clickable">{{ data[0].title }}</span>
-      <span class="clickable domain">{{ data[0].domain }}</span>
+      <span class="">◿</span>
+      <span>{{ store.getCommentList.title }}</span>
+      <span class="clickable domain">{{ store.getCommentList.domain }}</span>
     </div>
     <div class="d-flex align-center single-wrapper-subtitle">
-      <span>{{ data[0].points }} points by</span>
-      <span  class="clickable" @click="clickEvent('user', index)">{{ data[0].user }}</span>
-      <span>{{ data[0].time_ago }}</span>
-      <span>{{ data[0].comments_count }} comments</span>
+      <span>{{ store.getCommentList.points }} points by</span>
+      <span  class="clickable" @click="clickEvent('user')">{{ store.getCommentList.user }}</span>
+      <span>{{ store.getCommentList.time_ago }}</span>
+      <span>{{ store.getCommentList.comments_count }} comments</span>
     </div>
   </section>
 </template>
@@ -27,7 +34,8 @@ const data = newsStore.getNewsList.filter(data => data.id === parseInt(route.que
 
 <style lang="scss" scoped>
 .single-wrapper{
-  margin-bottom: 0.3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
 
   &-title{
     gap: 0.4rem;
