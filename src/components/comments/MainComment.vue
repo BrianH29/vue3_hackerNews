@@ -3,7 +3,30 @@ import { useComment } from '@/stores/comment';
 
 const store = useComment();
 const data = store.getCommentList;
-console.log('check data : ', data);
+
+ store.$onAction(({name, store, after, onError}) => {
+       const startTime = Date.now();
+
+      after((result) => {
+        console.log(
+        `Finished "${name}" after ${
+          Date.now() - startTime
+        }ms.\nResult: ${{result}}.`
+      )
+    })
+
+    onError(error => {
+      console.warn(`Failed "${name}" \n Error : ${error}`)
+    })
+  })
+
+const clickEvent = (sort, idx) => {
+  switch(sort){
+    case 'showMore' :
+      store.moreComment(idx);
+      break;
+  }
+}
 </script>
 
 <template>
@@ -16,7 +39,7 @@ console.log('check data : ', data);
     </div>
     <div v-html="item.content" class="wrapper__content"></div>
     <div class="wrapper__more">
-      <span>more comment</span>
+      <span @click.native="clickEvent('showMore', idx)">more comment</span>
     </div>
   </section>
 </article>
